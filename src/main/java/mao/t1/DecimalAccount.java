@@ -40,6 +40,7 @@ public interface DecimalAccount
     static void start(DecimalAccount account)
     {
         List<Thread> threads = new ArrayList<>();
+        long start = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++)
         {
             threads.add(new Thread(() ->
@@ -59,6 +60,8 @@ public interface DecimalAccount
                 e.printStackTrace();
             }
         });
-        System.out.println(account.getBalance());
+        long end = System.currentTimeMillis();
+        System.out.println("剩余余额：" + account.getBalance());
+        System.out.println("运行时间：" + (end - start) + "ms");
     }
 }
